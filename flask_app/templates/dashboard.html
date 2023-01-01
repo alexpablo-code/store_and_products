@@ -33,27 +33,17 @@
             </div>
         </div>
     </section>
-
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-3 bg-info bg-opacity-50">
-                    <h3>Store Here Soon</h3>
-
-                </div>
-
-            </div>
-
-        </div>
-    </section>
     
     <section>
         <div class="container">
             <div class="row">
-                <div class="col-3 bg-info bg-opacity-50">
-                    <h3>Store Here Soon</h3>
+                {% for store in all_stores %}
+                <div class="col-3 bg-success bg-opacity-50 text-center p-5 m-2">
+                    <h3><a href="/store/{{store.id}}">{{store.name}}</a></h3>
 
                 </div>
+
+                {% endfor %}
 
             </div>
 

@@ -7,6 +7,7 @@ class Store:
     DB = "store_and_products"
 
     def __init__(self, data):
+        self.id = data["id"]
         self.name = data["name"]
         self.created_at = data["created_at"]
         self.updated_at = data["updated_at"]
@@ -28,3 +29,34 @@ class Store:
         results = connectToMySQL(cls.DB).query_db(query,data)
 
         return results 
+
+    @classmethod
+    def all_stores(cls):
+        query = """
+                SELECT * FROM stores;
+                """
+
+        results = connectToMySQL(cls.DB).query_db(query)
+        stores = []
+
+        for row in results:
+            store = cls(row)
+
+            stores.append(store)
+
+        return stores 
+
+    @classmethod
+    def select_one(cls, store_id):
+        data = {
+            "id": store_id
+        }
+
+        query = """
+                Select * FROM stores
+                WHERE id = %(id)s;
+                """
+        results = connectToMySQL(cls.DB).query_db(query, data)
+        store = cls(results[0])
+
+        return store 
