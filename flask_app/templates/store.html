@@ -27,7 +27,7 @@
                     <h3>{{store.name}}</h3>
                 </div>
                 <div class="col-1 offset-7">
-                    <a href="#">+ add product</a>
+                    <a href="/add-product/{{store.id}}">+ add product</a>
                 </div>
             </div>
         </div>
@@ -47,12 +47,14 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {% for product in store.products %}
                             <tr>
-                                <td>example</td>
-                                <td>100</td>
-                                <td>Produce</td>
+                                <td>{{product.name}}</td>
+                                <td>${{product.price}}</td>
+                                <td>{{product.category}}</td>
                                 <td><a href="#">Edit</a> | <a href="#">Sell</a></td>
                             </tr>
+                            {% endfor %}
                         </tbody>
                     </table>
 

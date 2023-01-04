@@ -23,6 +23,6 @@ def create_store():
 
 @app.route("/store/<int:store_id>")
 def store(store_id):
-    store= Store.select_one(store_id)
+    store= Store.store_with_products(store_id)
 
     return render_template("store.html", store = store)
