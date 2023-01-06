@@ -16,3 +16,9 @@ def create_product():
     store_id = request.form["store_id"]
 
     return redirect(f"/store/{store_id}")
+
+@app.route("/sell-product/<int:product_id>/<int:store_id>")
+def sell_product(product_id, store_id):
+    Product.delete(product_id)
+
+    return redirect(f"/store/{store_id}")

@@ -29,24 +29,15 @@ class Product:
 
         return connectToMySQL(cls.DB).query_db(query,data)
 
-    # @classmethod 
-    # def store_products(cls, store_id):
-    #     data = {
-    #         "store_id": store_id
-    #     }
 
-    #     query = """
-    #             SELECT * FROM products
-    #             WHERE products.user_id = %(store_id)s;
-    #             """
+    @classmethod
+    def delete(cls, product_id):
+        data = {
+            "id": product_id
+        }
+        query = """
+                DELETE FROM products
+                WHERE id = %(id)s;
+                """
 
-    #     results = connectToMySQL(cls.DB).query_db(query,data)
-
-    #     store_products = []
-
-    #     for row in results:
-    #         product = cls(row)
-
-    #         store_products.append(product)
-
-    #     return store_products
+        return connectToMySQL(cls.DB).query_db(query,data)

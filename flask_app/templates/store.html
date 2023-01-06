@@ -52,7 +52,7 @@
                                 <td>{{product.name}}</td>
                                 <td>${{product.price}}</td>
                                 <td>{{product.category}}</td>
-                                <td><a href="#">Edit</a> | <a href="#">Sell</a></td>
+                                <td><a href="#">Edit</a> | <a href="/sell-product/{{product.id}}/{{store.id}}">Sell</a></td>
                             </tr>
                             {% endfor %}
                         </tbody>
